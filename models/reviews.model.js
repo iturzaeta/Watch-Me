@@ -14,7 +14,7 @@ const reviewsSchema = new mongoose.Schema ({
     },
     film: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'film',
+        ref: 'Film',
         required: true
     }
 
