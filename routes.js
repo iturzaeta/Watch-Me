@@ -6,10 +6,15 @@ const usersController = require('./controllers/users.controller')
 
 module.exports = router;
 
+
+///////////////////////HOME//////////////////////////////
+
 router.get('/', homeController.index);
+
+/////////////////////USERS//////////////////////
+
 router.get('/users/login', usersController.login);
 router.get('/users/new', usersController.new);
-
-router.post('/user/new', usersController.create);
+router.post('/users', usersController.create);
 
 
