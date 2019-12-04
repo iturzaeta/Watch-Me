@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//const upload = require('./cloudinary/config')
+const upload = require('./config/cloudinary.config')
 const homeController = require('./controllers/home.controller')
 const usersController = require('./controllers/users.controller')
 
@@ -15,6 +15,6 @@ router.get('/', homeController.index);
 
 router.get('/users/login', usersController.login);
 router.get('/users/new', usersController.new);
-router.post('/users', usersController.create);
+router.post('/users', upload.single('avatar'), usersController.create);
 
 
