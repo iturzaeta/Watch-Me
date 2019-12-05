@@ -16,5 +16,6 @@ router.get('/', homeController.index);
 router.get('/users/login', usersController.login);
 router.get('/users/new', usersController.new);
 router.post('/users', upload.single('avatar'), usersController.create);
+router.get('/users/:token/validate',usersController.validate);
 
 

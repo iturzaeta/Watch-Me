@@ -44,3 +44,18 @@ module.exports.create =(req,res,next) => {
           })
 
 }
+
+module.exports.validate = ( req, res, next ) =>{
+    User.findOne({ validateToken:req.params.token })
+    .then((user) => {
+        if(user.validated){
+            res.send("<h1>This Email has been Validated</h1>")
+        } else {
+        user.validated = true;
+        user.save()
+        .then(() =>{
+            res.redirect('/')
+        })}
+    })
+    .catch(err => {console.log(err)})
+}
