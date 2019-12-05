@@ -3,12 +3,15 @@ require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const logger = require('morgan')
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 
 
 
 require('./config/hbs.config');
 require('./config/db.config');
+const passportConfig = require('./config/passport.config');
+const session = require ('./config/session.config')
 
 
 /**
@@ -18,8 +21,16 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(cookieParser());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passportConfig);
+app.use(session)
+
+app.use((req, res, next)=>{
+  res.locals.currentUser = req.session.user
+  req.currentUser = req.session.user
+  next()
+})
 
 
 

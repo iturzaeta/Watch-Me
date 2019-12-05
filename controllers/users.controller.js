@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('../models/user.model')
 const email = require('../config/mail.config')
+const passport = require('passport');
 
 
 module.exports.login = (req, res, next) => {
@@ -51,7 +52,7 @@ module.exports.validate = ( req, res, next ) =>{
         if(user.validated){ //Check Validated and redirect
             res.send(`<h1>This Email has been Validated</h1>
             <script>setTimeout(function (){
-                window.location = '/'
+                window.location = '/users/login'
             },2000)</script>`)
             
         } else {
@@ -63,3 +64,18 @@ module.exports.validate = ( req, res, next ) =>{
     })
     .catch(err => {console.log(err)})
 }
+
+module.exports.doSocialLogin = (req , res, next )=>{
+  const socialProvider = req.params.provider
+
+  passport.authenticate(`${socialProvider}-auth`, (error,user)=>{
+    if(error){
+      next(error)
+    }else{
+      req.session.user = user
+      res.redirect('/')
+    }
+  })(req,res,next)
+
+}
+
