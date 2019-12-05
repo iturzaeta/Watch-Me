@@ -48,8 +48,12 @@ module.exports.create =(req,res,next) => {
 module.exports.validate = ( req, res, next ) =>{
     User.findOne({ validateToken:req.params.token })
     .then((user) => {
-        if(user.validated){
-            res.send("<h1>This Email has been Validated</h1>")
+        if(user.validated){ //Check Validated and redirect
+            res.send(`<h1>This Email has been Validated</h1>
+            <script>setTimeout(function (){
+                window.location = '/'
+            },2000)</script>`)
+            
         } else {
         user.validated = true;
         user.save()
