@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = require('../models/user.model')
+const email = require('../config/mail.config')
 
 
 module.exports.login = (req, res, next) => {
@@ -23,7 +24,7 @@ module.exports.create =(req,res,next) => {
     console.log(user)
     user.save()
         .then((user) => {
-            //email
+            email.sendValidateEmail(user)
             res.redirect('/users/login')
         })
         .catch(error => {
