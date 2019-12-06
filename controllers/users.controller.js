@@ -79,3 +79,54 @@ module.exports.doSocialLogin = (req , res, next )=>{
 
 }
 
+module.exports.doLogin = (req, res, next) =>{
+  const { email, password } = req.body
+
+  if(!email || !password){
+    return res.render('/users/login', {user: req.body})
+  }
+
+  User.findOne({email: email, validated: true})
+    .then(user =>{
+      if(!user){
+        return res.render('/users/login', {
+          user: req.body,
+          error: {password: 'invalid credentials'}
+        })
+      } else {
+        return user.checkPassword(password)
+          .then(match => {
+            if (!match) {
+              res.render('users/login', {
+                user: req.body,
+                error: {password: 'invalid credentials'}
+              })
+            } else {
+              req.session.user = user
+              req.session.genericSuccess = 'Welcome!'
+              res.redirect('/')
+            }
+          })
+        
+      }
+    })
+
+    .catch(error => {
+      if(error instanceof mongoose.Error.ValidationError) {
+        res.render('/users/login', {
+          user: req.body,
+          error: error.error
+        })
+      } else {
+        next(error)
+      }
+    })
+
+}
+
+module.exports.logOut = (res, req) => {
+  console.info('req => ', req.session) // Revision
+  req.session.destroy()
+  res.redirect('/')
+}
+

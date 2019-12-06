@@ -9,7 +9,7 @@ passport.use('google-auth', new GoogleStrategy({
 },authenticateOAuthUser))
 
 function authenticateOAuthUser (accessToken, refreshToken, profile, next){
-    console.log('Profile => ', profile)
+    
     User.findOne({[`social.${profile.provider.toLowerCase()}`]:profile.id})
         .then(user => {
             if(user){
