@@ -73,6 +73,7 @@ module.exports.doSocialLogin = (req , res, next )=>{
       next(error)
     }else{
       req.session.user = user
+      console.info('REQ => ', req.session.user)
       res.redirect('/')
     }
   })(req,res,next)
@@ -124,8 +125,9 @@ module.exports.doLogin = (req, res, next) =>{
 
 }
 
-module.exports.logOut = (res, req) => {
+module.exports.logout = (req, res) => {
   console.info('req => ', req.session) // Revision
+  console.info('res => ', res.redirect)
   req.session.destroy()
   res.redirect('/')
 }
