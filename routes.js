@@ -22,5 +22,8 @@ router.post('/logout', usersController.logout);
 router.post('/google', passport.authenticate('google-auth', {scope:['openid','profile','email'] }))
 router.get('/callback/:provider',usersController.doSocialLogin)
 
+//////////////////// USER PAGE //////////////////////////////////
+router.get('/users/:username', usersController.profile)
+
 
 module.exports = router;
