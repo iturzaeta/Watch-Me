@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const alertMiddleware = require('./middlewares/alert.middleware')
 
 
 
@@ -31,6 +32,8 @@ app.use((req, res, next)=>{
   req.currentUser = req.session.user
   next()
 })
+
+app.use(alertMiddleware)
 
 
 

@@ -84,13 +84,13 @@ module.exports.doLogin = (req, res, next) =>{
   const { email, password } = req.body
 
   if(!email || !password){
-    return res.render('/users/login', {user: req.body})
+    return res.render('users/login', {user: req.body})
   }
 
   User.findOne({email: email, validated: true})
     .then(user =>{
       if(!user){
-        return res.render('/users/login', {
+        return res.render('users/login', {
           user: req.body,
           error: {password: 'invalid credentials'}
         })
@@ -125,10 +125,29 @@ module.exports.doLogin = (req, res, next) =>{
 
 }
 
+module.exports.profile = (req, res, next) => {
+  User.findOne ({username: req.params.username})
+    .then(user =>{
+      console.log(user)
+      if(user){
+        res.render('users/profile',{user})
+      }
+      else{
+        res.redirect('/')
+      }
+
+    })
+    .catch(next)
+}
+
+
+
+
+
+
 module.exports.logout = (req, res) => {
-  console.info('req => ', req.session) // Revision
-  console.info('res => ', res.redirect)
-  req.session.destroy()
+  req.session.destroy() //destroy session to server
+  res.clearCookie("connect.sid") //destroy cookie nav
   res.redirect('/')
 }
 
