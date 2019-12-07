@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema ({
     },
     validated:{
         type: Boolean,
-        default: true //change to false
+        default: false
     },
     social:{
         facebook: String,
