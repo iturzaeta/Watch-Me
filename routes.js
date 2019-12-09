@@ -7,6 +7,8 @@ const passport = require ('passport')
 
 ///////////////////////HOME//////////////////////////////
 router.get('/', homeController.index);
+//router.get('/films/search', homeController.search)
+router.post('/films/search', homeController.doSearch)
 
 /////////////////////USERS//////////////////////
 router.get('/users/new', usersController.new);
