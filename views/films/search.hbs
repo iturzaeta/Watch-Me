@@ -1,0 +1,16 @@
+<h1>Film</h1>
+<h3>{{movie}}</h3>
+
+
+  <video
+    id="video"
+    class="video-js vjs-default-skin"
+    autoplay
+    width="640" height="264"
+    data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}] }'
+  >
+  </video>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@2.5.1/dist/Youtube.min.js"></script>
+  
