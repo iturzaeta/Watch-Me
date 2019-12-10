@@ -4,8 +4,9 @@
     id="video"
     class="video-js vjs-default-skin"
     autoplay
+    loop
     width="640" height="264"
-    data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}] }'
+    data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
   >
   </video>
   <div class="d-flex align-items-start">

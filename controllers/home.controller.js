@@ -17,7 +17,7 @@ module.exports.doSearch = (req, res, next) =>{
     imdb.get({name: `${name}`}, {apiKey: process.env.IMDB_ID})
     .then((data) => {
         
-        movieSearch (`${name}`)
+        movieSearch (`${data.title}`)
         .then(movie => {
             console.log(movie,data)
             res.render('films/search',{movie: movie, data: data})
