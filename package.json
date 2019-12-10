@@ -21,6 +21,7 @@
     "faker": "^4.1.0",
     "hbs": "^4.0.6",
     "http-errors": "^1.7.3",
+    "imdb-api": "^4.0.3",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1",
     "movie-trailer": "^2.0.5",
