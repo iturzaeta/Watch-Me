@@ -51,7 +51,14 @@ const userSchema = new mongoose.Schema ({
         facebook: String,
         google: String,
         slack: String
-    }
+    },
+    favorite:[
+        {
+            name: String,
+            poster: String,
+        }
+
+    ]
 }, {timestamps:true} )
 
 userSchema.pre ('save', function(next){
