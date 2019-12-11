@@ -1,23 +1,41 @@
-<h1>{{data.title}}</h1>
+<div class="mb-2 bg-dark text-white video-position-down">
 
-  <video
-    id="video"
-    class="video-js vjs-default-skin"
-    autoplay
-    loop
-    width="640" height="264"
-    data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
-  >
-  </video>
-  <div class="d-flex align-items-start">
-    <div class="m-3">
-      <img src="{{data.poster}}">
-    </div>
-    <div class="m-3">
-      <h6>{{data.plot}}</h6>
-    </div>
-
+  <div class="video-l">
+    <video
+      id="video"
+      class="video-js vjs-default-skin video-position-down"
+      autoplay
+      loop
+      width="640" height="264"
+      data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
+    >
+    </video>
   </div>
+  <div class="video-black">
+
+    <div class="fixed-top position-relative video-down">
+      
+      <div class="d-flex justify-content-end mr-5">
+        <div><h1>{{data.title}}</h1></div>
+      </div>
+
+      <div class="d-flex bd-highlight">
+        <div class="m-3">
+          <img src="{{data.poster}}">
+        </div>
+        <div class="mt-3">
+          <h6>{{data.plot}}</h6>
+        </div>
+        <div class="container mx-auto m3" style="width: 30%;">
+          <i class="fas fa-dollar-sign fa-5x mt-3"></i><h4 class="mt-2">{{data.boxoffice}}</h4>
+          <i class="fas fa-hourglass-half fa-5x mt-3"></i><h4 class="mt-2">{{data.runtime}}</h4>
+          <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2">{{data.rating}}</h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
  
   <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.min.js"></script> 
