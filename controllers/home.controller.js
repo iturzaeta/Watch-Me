@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const movieSearch = require('movie-trailer')
 const imdb = require('imdb-api')
+const spotifyApi = require('../config/spotify.config')
+
+
 
 
 module.exports.index = (req, res, next) => {
@@ -19,8 +22,25 @@ module.exports.doSearch = (req, res, next) =>{
         
         movieSearch (`${data.title}`)
         .then(movie => {
-            console.log(movie,data)
-            res.render('films/search',{movie: movie, data: data})
+            
+            spotifyApi.searchPlaylists(`${data.title} OST`)
+            .then((playlist) => {
+               
+                
+                spotifyApi.getPlaylistTracks('4LswIBZodAFHvVudrCxJl8') ///cambiar esto
+                .then(
+                    function(tracks) {
+                        res.send(tracks.body.items[0].track.preview_url);
+                        //res.render('films/search',{movie: movie, data: data, playlist: playlist.body.playlists.items, tracks: tracks.body.items})
+                },
+                function(err) {
+                  console.log('Something went wrong!', err);
+                
+               
+            
+               })
+              });
+            
         })
     })
     

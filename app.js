@@ -46,7 +46,7 @@ app.set('view engine', 'hbs');
 /**
  * Configure routes
  */
-const router = require('./routes');
+const router = require('./config/routes');
 app.use('/', router);
 
 // catch 404 and forward to error handler

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('./config/cloudinary.config')
-const homeController = require('./controllers/home.controller')
-const usersController = require('./controllers/users.controller')
+const upload = require('./cloudinary.config')
+const homeController = require('../controllers/home.controller')
+const usersController = require('../controllers/users.controller')
 const passport = require ('passport')
 
 ///////////////////////HOME//////////////////////////////
