@@ -33,6 +33,7 @@ module.exports.doSearch = (req, res, _) =>{
     let getAllInfo = null
     imdb.get({name: search}, {apiKey: process.env.IMDB_ID})
         .then(data => {
+            console.log("DATA => ", data)
             manager = apiManager(data)            
             return movieSearch (`${data.title}`)
         })
@@ -41,16 +42,22 @@ module.exports.doSearch = (req, res, _) =>{
             return manager.playlists()
         })
         .then(({ body }) => {
+            //res.send(body.playlists.items[0].images[0].url)
             getAllInfo = manager.getInfo(body)
             return manager.tracks(body.playlists.items[0])
         })
         .then(getPreview)
         .then(tracks => 
-            //res.render('films/search', {...getAllInfo(), tracks}))
-            res.send(tracks))
+            res.render('films/search', {...getAllInfo(), tracks}))
+            //res.send(tracks))
+            
 
         .catch(err => {
             console.info('Something went wrong! => ', err)
             res.redirect('/', { err })
         })
+}
+
+module.exports.like = (req, res, next) => {
+    console.log("DATA => ", data)
 }
