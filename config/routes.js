@@ -27,5 +27,8 @@ router.get('/callback/:provider',usersController.doSocialLogin)
 //////////////////// USER PAGE //////////////////////////////////
 router.get('/users/:username', usersController.profile)
 
+///////////////////LIKE//////////////////////////////////////
+router.post('/like', homeController.like)
+
 
 module.exports = router;

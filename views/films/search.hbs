@@ -6,6 +6,7 @@
       class="video-js vjs-default-skin video-position-down"
       autoplay
       loop
+      controls
       width="640" height="264"
       data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
     >
@@ -27,6 +28,9 @@
           <h6>{{data.plot}}</h6>
         </div>
         <div class="container mx-auto m3" style="width: 30%;">
+          <form method="POST" action="/like">
+            <button><i class="far fa-star fa-5x mt-3"></i></button>
+          </form>
           <i class="fas fa-dollar-sign fa-5x mt-3"></i><h4 class="mt-2">{{data.boxoffice}}</h4>
           <i class="fas fa-hourglass-half fa-5x mt-3"></i><h4 class="mt-2">{{data.runtime}}</h4>
           <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2">{{data.rating}}</h4>
@@ -38,7 +42,13 @@
 
 </div>
 
-<h5><a href="{{playlist.[0].external_urls.spotify}}">Album</a></h5>
+{{#each tracks as |track|}}
+<audio controls src={{track}}></audio>
+{{/each}}
+
+<img src="{{playlist.[0].images.[0].url}}">
+
+<h5><a href="{{playlist.[0].external_urls.spotify}}" target="_blank">Listen Full Album on Spotify</a></h5>
 
  
   <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.min.js"></script> 
