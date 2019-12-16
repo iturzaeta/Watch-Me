@@ -14,40 +14,43 @@ module.exports.index = (req, res, next) => {
 //     res.render('films/search')
 // }
 
-module.exports.doSearch = (req, res, next) =>{
-    const name = req.body.search
+const previewUrl = ({ track }) => track.preview_url
 
-    imdb.get({name: `${name}`}, {apiKey: process.env.IMDB_ID})
-    .then((data) => {
-        
-        movieSearch (`${data.title}`)
-        .then(movie => {
-            
-            spotifyApi.searchPlaylists(`${data.title} OST`)
-            .then((playlist) => {
-               
-                
-                spotifyApi.getPlaylistTracks('4LswIBZodAFHvVudrCxJl8') ///cambiar esto
-                .then(
-                    function(tracks) {
-                        res.send(tracks.body.items[0].track.preview_url);
-                        //res.render('films/search',{movie: movie, data: data, playlist: playlist.body.playlists.items, tracks: tracks.body.items})
-                },
-                function(err) {
-                  console.log('Something went wrong!', err);
-                
-               
-            
-               })
-              });
-            
+const getPreview = ({ body }) =>
+    body.items
+        .filter(previewUrl)
+        .map(previewUrl)
+
+const apiManager = data => movie => ({
+    getInfo: ({ playlists }) => _ => ({ data, movie, playlist: playlists.items }),
+    tracks: ({ id }) => spotifyApi.getPlaylistTracks(`${id}`),
+    playlists: _ => spotifyApi.searchPlaylists(`${data.title} OST`)
+})
+
+module.exports.doSearch = (req, res, _) =>{
+    const { search } = req.body
+    let manager = null
+    let getAllInfo = null
+    imdb.get({name: search}, {apiKey: process.env.IMDB_ID})
+        .then(data => {
+            manager = apiManager(data)            
+            return movieSearch (`${data.title}`)
         })
-    })
-    
-    .catch((err)=>{
-        res.redirect('/',{err:err})
-    })
-    
-    
-    
+        .then(movie => {
+            manager = manager(movie)
+            return manager.playlists()
+        })
+        .then(({ body }) => {
+            getAllInfo = manager.getInfo(body)
+            return manager.tracks(body.playlists.items[0])
+        })
+        .then(getPreview)
+        .then(tracks => 
+            //res.render('films/search', {...getAllInfo(), tracks}))
+            res.send(tracks))
+
+        .catch(err => {
+            console.info('Something went wrong! => ', err)
+            res.redirect('/', { err })
+        })
 }
