@@ -1,11 +1,19 @@
-<h1>{{user.username}}</h1>
+<h1 name="username" id="username">{{user.username}}</h1>
 
 <div class="d-flex justify-content-start">
     <img class="rounded-circle"src="{{user.avatar}}">
     <div class="ml-5">
-    <h3>{{user.name}}</h3>
-    <h4 class="mt-4">{{user.email}}</h4>
-    <input type="text-area" value="{{user.bio}}">
+    <h3 name="name" id="name" >Name: {{user.name}}</h3>
+    <h3 name="bio" id="bio">Bio: {{user.bio}}<h3>
+    <h3 name="email" id="email" class="mt-4">Email: {{user.email}}</h3>
+    
+    <form action="/users/{{user.username}}/edit" method="GET">
+    <button class="btn btn-warning" type="submit">Edit Profile</button>
+    </form>
+
+    <form action="/users/{{user.username}}/delete" method="POST">
+    <button class="btn btn-danger" type="submit">Delete Profile</button>
+    </form>
     </div>
 </div>
 <div class="mt-4">
