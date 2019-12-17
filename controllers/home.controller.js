@@ -42,7 +42,7 @@ module.exports.doSearch = (req, res, _) =>{
             return manager.playlists()
         })
         .then(({ body }) => {
-            //res.send(body.playlists.items[0].images[0].url)
+            //res.send(body.playlists.items[0].tracks)
             getAllInfo = manager.getInfo(body)
             return manager.tracks(body.playlists.items[0])
         })
