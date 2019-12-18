@@ -27,8 +27,9 @@ router.get('/callback/:provider',usersController.doSocialLogin)
 //////////////////// USER PAGE //////////////////////////////////
 router.get('/users/:username', usersController.profile)
 router.get('/users/:username/edit',usersController.edit)
-router.post('/users/:username/update',usersController.doEdit)
+router.post('/users/:username/update',upload.single('avatar'),usersController.doEdit)
 router.post('/users/:username/delete',usersController.delete)
+// Falta ruta post a añadir favoritos
 
 ///////////////////LIKE//////////////////////////////////////
 router.post('/like', homeController.like)

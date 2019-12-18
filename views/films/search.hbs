@@ -28,9 +28,9 @@
           <h6>{{data.plot}}</h6>
         </div>
         <div class="container mx-auto m3" style="width: 30%;">
-          <form method="POST" action="/like">
-            <button><i class="far fa-star fa-5x mt-3"></i></button>
-          </form>
+          {{!-- <form method="POST" action="/like"> --}}
+            <button class="fav-button"><i class="far fa-star fa-5x mt-3"></i></button>
+          {{!-- </form> --}}
           <i class="fas fa-dollar-sign fa-5x mt-3"></i><h4 class="mt-2">{{data.boxoffice}}</h4>
           <i class="fas fa-hourglass-half fa-5x mt-3"></i><h4 class="mt-2">{{data.runtime}}</h4>
           <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2">{{data.rating}}</h4>
@@ -53,4 +53,18 @@
  
   <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.min.js"></script> 
   <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@2.5.1/dist/Youtube.min.js"></script>
+
+  <script>
+
+    // const url = `/user/${username.id}/favourite`
+    const url = ''
+
+    const favButton = document.querySelector('[class=fav-button]')
+    favButton.addEventListener('click', function() {
+      // No guardar name y poster, guardar id y popular cuando haga falta
+      axios.post(url, { name: 'name', poster: 'poster name' })
+        .then(({ data }) => console.info('Result => ', data))
+        .catch(error => console.error('Error fetching data => ', error))
+    })
   
+  </script>

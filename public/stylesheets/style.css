@@ -37,3 +37,47 @@
     background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.29) 87%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
 } */
+
+#background {
+    background-color: rgb(19, 100, 19);
+   
+}
+
+/* #search-input {
+    border-color: goldenrod;
+    border-width: 2px;
+    background-color: rgb(19, 100, 19);
+    color: rgb(241, 177, 13);
+} */
+
+#home-title {
+    font-family: 'Sofia', cursive;
+    padding-top: 10px;
+    color: rgb(241, 177, 13);
+    text-align: center;
+    font-size: 100px;
+
+}
+
+#search-btn {
+    color: rgb(241, 177, 13);
+    border-color: goldenrod;
+    border-width: 2px;
+    background-color: rgb(19, 100, 19);
+    margin-left: 42%
+    
+}
+
+#search {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#home {
+    
+    max-height: 100%;
+}
+
+
+

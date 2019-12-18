@@ -1,8 +1,11 @@
-<div class="container">
-    <h1>Watch-Me</h1>
-    <form action="/films/search" method="POST">
-        <input type="name" name="search" class="form-control" id="search">
-        <br>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+<div class="container" id="home">
+    <h1 id="home-title"><i class="fas fa-film"></i>Watch-Me</h1>
+    <div id="search">
+        <form id="search-form" action="/films/search" method="POST">
+            <input id="search-input" type="name" name="search" class="form-control" id="search" placeholder="Enter movie title...">
+            <br>
+            <button id="search-btn" type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+    
 </div>
