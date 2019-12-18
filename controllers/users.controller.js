@@ -162,11 +162,20 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
+  const {name,username,email,password,bio} = req.body
   
-  const username = req.params.username
   console.log(req.body)
+
+  userModel = {
+    name,
+    username,
+    email,
+    password,
+    avatar: req.file ? req.file.url : null,
+    bio
+}
   
-    User.findOneAndUpdate({username: req.body.username},req.body,{ new: true })
+    User.findOneAndUpdate({username},userModel,{ new: true })
     .then(()=>{
       res.redirect(`/users/${req.body.username}`)
     })
