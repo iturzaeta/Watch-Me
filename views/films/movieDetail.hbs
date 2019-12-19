@@ -1,14 +1,13 @@
-<div class="mb-2 bg-dark text-white video-position-down af">
+<div class="mb-2 video-position-down" id="movie-title" id="background">
 
   <div class="video-l">
     <video
       id="video"
       class="video-js vjs-default-skin video-position-down"
       autoplay
-      loop
       controls
-      width="640" height="264"
-      data-setup='{ "aspectRatio":"640:267","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
+      width="640" height="300"
+      data-setup='{ "aspectRatio":"640:300","techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{movie}}"}],"youtube": { "start": 5 } }'
     >
     </video>
   </div>
@@ -16,8 +15,12 @@
 
     <div class="fixed-top position-relative video-down">
       
-      <div class="d-flex justify-content-end mr-5">
-        <div><h1>{{data.title}}</h1></div>
+      <div class="d-flex justify-content-start ml-3 mt-2">
+        <h1>{{data.title}}</h1>
+      </div>
+
+      <div class="d-flex justify-content-start ml-3">
+        <h3>A film by {{data.director}}</h3>
       </div>
 
       <div class="d-flex bd-highlight">
@@ -25,11 +28,16 @@
           <img src="{{data.poster}}">
         </div>
         <div class="mt-3">
+          <h2>Sinopsis</h2>
           <h5>{{data.plot}}</h5>
         </div>
         <div class="container mx-auto m3" style="width: 30%;">
           {{!-- <form method="POST" action="/like"> --}}
-          <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2">Add Favorite list</h4>
+          
+          <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2"></h4>
+
+          <button id="add-fav-btn" data-name="{{data.title}}" data-id="{{data.imdbid}}" data-img="{{data.poster}}" onclick="favourites(event)">Add Favorite list</button>
+
           <i class="fas fa-dollar-sign fa-5x mt-3"></i><h4 class="mt-2">{{data.boxoffice}}</h4>
           <i class="fas fa-hourglass-half fa-5x mt-3"></i><h4 class="mt-2">{{data.runtime}}</h4>
           <i class="far fa-star fa-5x mt-3"></i><h4 class="mt-2">{{data.rating}}</h4>
@@ -46,7 +54,7 @@
 
 
 <div class="d-flex align-items-start m-3">
-    <img class="mr-3" src="{{playlist.[0].images.[0].url}}">
+    <img class="spoty-img mr-3" src="{{playlist.[0].images.[0].url}}">
 
     <iframe src="https://open.spotify.com/embed/playlist/{{playlist.[0].id}}" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
@@ -64,17 +72,16 @@
   <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@2.5.1/dist/Youtube.min.js"></script>
 
   <script>
+     function favourites(event){
+       const name = event.target.getAttribute('data-name')
+       const id = event.target.getAttribute('data-id')
+       const img = event.target.getAttribute('data-poster')
 
-    // const url = `/user/${username.id}/favourite`
-    const url = ''
-
-    const favButton = document.querySelector('[class=fav-button]')
-    favButton.addEventListener('click', function() {
-      // No guardar name y poster, guardar id y popular cuando haga falta
-      axios.post(url, { name: 'name', poster: 'poster name' })
-        .then(({ data }) => console.info('Result => ', data))
-        .catch(error => console.error('Error fetching data => ', error))
-    })
+       axios.post(`/films/${id}/favourite`, { method: "post", withCredentials: true })
+        .then(response => console.log(response ))
+        .catch(error => console.log(error))
+    }
+   
   
   </script>
 </div>

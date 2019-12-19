@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 const movieSearch = require('movie-trailer')
 const imdb = require('imdb-api')
 const spotifyApi = require('../config/spotify.config')
-
-
+const User = require('../models/user.model')
 
 
 module.exports.index = (req, res, next) => {
@@ -38,6 +37,7 @@ module.exports.doSearch = (req, res, _) =>{
             return movieSearch (`${data.title}`)
         })
         .then(movie => {
+            console.log(movie)
             manager = manager(movie)
             return manager.playlists()
         })
@@ -48,7 +48,7 @@ module.exports.doSearch = (req, res, _) =>{
         })
         .then(getPreview)
         .then(tracks => 
-            res.render('films/search', {...getAllInfo(), tracks}))
+            res.render('films/movieDetail', {...getAllInfo(), tracks}))
             //res.send(tracks))
             
 
@@ -58,6 +58,26 @@ module.exports.doSearch = (req, res, _) =>{
         })
 }
 
-module.exports.like = (req, res, next) => {
-    console.log("DATA => ", data)
-}
+module.exports.favourite = (req, res, next) => {
+    const id = req.currentUser._id
+
+    User.findById(id)
+    .then(user =>{
+        if(!user.favorite.includes(req.params.id)){
+            User.findByIdAndUpdate(id, {
+                $push: { favorite: req.params.id }
+            }, {
+                new: true
+            })
+             .then(user => {
+                user.save()
+                console.log(user)
+            })
+        } else {
+            console.log('ya la tiene', user)
+        }
+    })
+    .catch(error => next(error))
+}   
+
+

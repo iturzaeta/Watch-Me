@@ -38,10 +38,10 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
 } */
 
-/*#background {
+#background {
     background-color: rgb(19, 100, 19);
    
-}*/
+}
 
 /* #search-input {
     border-color: goldenrod;
@@ -56,6 +56,7 @@
     color: rgb(241, 177, 13);
     text-align: center;
     font-size: 100px;
+    padding-top: 20%;
 
 }
 
@@ -64,20 +65,45 @@
     border-color: goldenrod;
     border-width: 2px;
     background-color: rgb(19, 100, 19);
-    margin-left: 42%
+    margin-left: 45%;
+
     
 }
 
-#search {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-}
+
 
 #home {
     
-    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
+#search-container {
+    width: 50%;
+}
 
+#movie-title {
+    font-family: 'Girassol', cursive;
+    color: rgb(241, 177, 13);
 
+}
+
+.spoty-img {
+    height: 300px;
+    width: 350px;
+}
+
+.navbar {
+    background-color: rgb(8, 61, 8);
+    
+}
+
+#search-form {
+    padding-top: 5%;
+}
+
+.nav-link {
+    color: rgb(241, 177, 13);
+}

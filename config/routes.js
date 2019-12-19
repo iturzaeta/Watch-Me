@@ -8,7 +8,7 @@ const passport = require ('passport')
 ///////////////////////HOME//////////////////////////////
 router.get('/', homeController.index);
 //router.get('/films/search', homeController.search)
-router.post('/films/search', homeController.doSearch)
+router.post('/films/movieDetail', homeController.doSearch)
 
 /////////////////////USERS//////////////////////
 router.get('/users/new', usersController.new);
@@ -30,9 +30,8 @@ router.get('/users/:username/edit',usersController.edit)
 router.post('/users/:username/update',upload.single('avatar'),usersController.doEdit)
 router.post('/users/:username/delete',usersController.delete)
 // Falta ruta post a añadir favoritos
-
 ///////////////////LIKE//////////////////////////////////////
-router.post('/like', homeController.like)
+router.post('/films/:id/favourite', homeController.favourite)
 
 
 module.exports = router;

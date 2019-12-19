@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user.model')
 const email = require('../config/mail.config')
 const passport = require('passport');
+const imdb = require('imdb-api')
 
 
 module.exports.login = (req, res, next) => {
@@ -128,9 +129,17 @@ module.exports.doLogin = (req, res, next) =>{
 module.exports.profile = (req, res, next) => {
   User.findOne ({username: req.params.username})
     .then(user =>{
-      
       if(user){
-        res.render('users/profile',{user: user})
+        let movies = []
+        Promise.all(user.favorite.map(id => {
+          return imdb.get({id: id}, {apiKey: process.env.IMDB_ID}).
+            then((movie) => {
+              movies.push(movie)
+          });
+        }))
+        .then(() => {
+          res.render('users/profile',{user: user, movies: movies})
+        })
       }
       else{
         res.redirect('/')

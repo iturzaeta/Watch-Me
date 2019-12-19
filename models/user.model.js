@@ -52,13 +52,12 @@ const userSchema = new mongoose.Schema ({
         google: String,
         slack: String
     },
-    favorite:[
-        {
-            name: String,
-            poster: String,
-        }
+    favorite:
+    {
+        type: [String],
+    }
 
-    ]
+    
 }, {timestamps:true} )
 
 userSchema.pre ('save', function(next){
