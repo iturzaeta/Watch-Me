@@ -1,44 +1,46 @@
-<h1 name="username" id="username">{{user.username}}</h1>
-
-<div class="d-flex justify-content-start">
-    <img class="rounded-circle"src="{{user.avatar}}">
-    <div class="ml-5">
-    <h3 name="name" id="name" >Name: {{user.name}}</h3>
-    <h3 name="bio" id="bio">Bio: {{user.bio}}<h3>
-    <h3 name="email" id="email" class="mt-4">Email: {{user.email}}</h3>
-    
-    <form action="/users/{{user.username}}/edit" method="GET">
-    <button class="btn btn-warning" type="submit">Edit Profile</button>
-    </form>
-
-    <form action="/users/{{user.username}}/delete" method="POST">
-    <button class="btn btn-danger" type="submit">Delete Profile</button>
-    </form>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img class="card-img" height="100%" width="250" name="avatar" id="avatar" src="{{user.avatar}}" alt="">
     </div>
-</div>
-<div class="mt-4">
-<h2>Favorite movies</h2>
-{{#each movies as |movie|}}
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title" name="username" id="username">Username: {{user.username}}</h5>
+        <h5 class="card-title" name="name" id="name">Name: {{user.name}}</h5>
+        <h5 class="card-title" name="email" id="email">Email: {{user.email}}</h5>
+        <h5 class="card-title" name="bio" id="bio">Bio: <i>{{user.bio}}</i></h5>
+        <div class="d-flex flex-row ml-3">
+             <form action="/users/{{user.username}}/edit" method="GET">
+                <button class="btn btn-warning mr-2" type="submit">Edit Profile</button>
+            </form>
+
+            <form action="/users/{{user.username}}/delete" method="POST">
+                <button class="btn btn-danger" type="submit">Delete Profile</button>
+            </form>
+        </div>
+       
+        
+      </div>
+    </div>
   </div>
 </div>
-    <img src="{{movie.poster}}">
-{{/each}}
+
+<div class="mt-4">
+    <h2>Favorite movies</h2>
+    <div class="cards-container">
+        
+    {{#each movies as |movie|}}
+        <div class="card mb-3" id="card-background" style="width: 18rem;">
+            <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <a href="#" class="btn btn-warning">View Details</a>
+                </div>
+        </div>
+    {{/each}}
+    </div>
 </div>
 
 
 
-        <div class="d-flex justify-content-start">
-    {{#each user.favorite}}
-        <div class="d-flex flex-column bd-highlight m-2">
-        <h3>{{name}}</h3>
-        <img src="{{poster}}">
-        </div>
-    {{/each}}
-        </div>
 

@@ -70,7 +70,9 @@
     
 }
 
-
+#sinopsis {
+    text-decoration: underline;
+}
 
 #home {
     
@@ -105,5 +107,27 @@
 }
 
 .nav-link {
+    color: rgb(241, 177, 13);
+}
+
+.cards-container {
+    display: flex;
+    padding: 50px 100px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.cards-container img {
+    object-fit: contain;
+    object-position: center;
+    height: 200px;
+    width: 100%;
+}
+
+#card-background {
+    background-color: rgb(8, 61, 8);
+}
+
+.card-title {
     color: rgb(241, 177, 13);
 }
