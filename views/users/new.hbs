@@ -1,5 +1,6 @@
 {{#if user}}
 
+<div id="new-form">
 <form action="/users" method="POST" enctype="multipart/form-data"> 
   <div class="form-group">
     <label for="name">Name</label>
@@ -39,7 +40,7 @@
 
   <div class="form-group">
     <label for="avatar">Avatar</label>
-    <input name="avatar" type="file" class="form-control-file {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
+    <input name="avatar" type="file" class="form-control-file btn btn-warning {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
       placeholder="Enter avatar url" value="{{ user.avatar }}">
 
     {{#if error.avatar}}
@@ -78,10 +79,15 @@
   </button>
 </form>
 
+
+</div>
+
+
 {{else}}
 <!--  UPDATE -->
 
 
+<div id="new-form">
 
 <form action="/users/:username/update" method="POST" enctype="multipart/form-data"> 
   <div class="form-group">
@@ -122,7 +128,7 @@
 
   <div class="form-group">
     <label for="avatar">Avatar</label>
-    <input name="avatar" type="file" class="form-control-file {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
+    <input name="avatar" type="file" class="form-control-file  {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
       placeholder="Enter avatar url" value="{{ avatar }}">
 
     {{#if error.avatar}}
@@ -134,7 +140,7 @@
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input name="password" type="password" class="form-control {{#if error.password }}is-invalid{{/if}}" id="password"
+    <input name="password" type="password" class="form-control  {{#if error.password }}is-invalid{{/if}}" id="password"
       placeholder="password" value="{{ password }}">
 
     {{#if error.password}}
@@ -160,5 +166,6 @@
     Update
   </button>
 </form>
+</div>
 
 {{/if}}

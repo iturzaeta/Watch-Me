@@ -65,12 +65,13 @@
     border-color: goldenrod;
     border-width: 2px;
     background-color: rgb(19, 100, 19);
-    margin-left: 45%;
+    align-self: center;
+    
 
     
 }
 
-#sinopsis {
+#sinopsis-title {
     text-decoration: underline;
 }
 
@@ -84,6 +85,10 @@
 
 #search-container {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 #movie-title {
@@ -93,8 +98,8 @@
 }
 
 .spoty-img {
-    height: 300px;
-    width: 350px;
+    height: 250px;
+    width: 300px;
 }
 
 .navbar {
@@ -130,4 +135,114 @@
 
 .card-title {
     color: rgb(241, 177, 13);
+}
+
+#copy {
+    color: rgb(241, 177, 13);
+}
+
+.profile {
+    background-color: rgb(8, 61, 8); 
+}
+
+#favorite-title {
+    text-align: center;
+    color: rgb(241, 177, 13);
+    padding-top: 3%;
+    text-decoration: underline;
+}
+
+.card-body h5 {
+    margin-top: 20px;;
+}
+
+#new-form {
+    margin-top: 5%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    color: rgb(241, 177, 13);
+}
+
+#new-form input {
+    border-color:rgb(241, 177, 13);
+    border-width: 2px;
+}
+
+#new-form textarea {
+    border-color:rgb(241, 177, 13);
+    border-width: 2px;
+}
+
+#login-btn {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#login-btn {
+    text-align: center;
+}
+
+
+#qestion {
+    text-align: center;
+    padding-top: 3%;
+    color: white
+}
+
+#or {
+    padding-top: 1%;
+    color: white
+    
+}
+
+.fab {
+    color: blue;
+}
+
+#google {
+    background-color: rgb(138, 138, 138);
+    border-color:rgb(241, 177, 13);
+}
+
+#add-fav-btn {
+    background-color: rgb(19, 100, 19);
+    border: none;
+    color: rgb(241, 177, 13);
+    padding-bottom: 2%;
+}
+
+#icons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#sinopsis {
+    max-width: 90%;
+}
+
+#sinopsis h5 {
+    max-width: 100%;
+    text-align: justify;
+}
+
+#fav {
+    padding-top: 1%;
+}
+
+.spoty-title {
+    padding-top: 10%;
+    font-size: 35px;
+}
+
+.spoty-logo {
+    color: rgb(241, 177, 13);
+    border-color: rgb(6, 63, 6);
+}
+
+#plot {
+    font-family: 'Raleway', sans-serif;
+
 }

@@ -105,7 +105,7 @@ module.exports.doLogin = (req, res, next) =>{
               })
             } else {
               req.session.user = user
-              req.session.genericSuccess = 'Welcome!'
+              req.session.genericSuccess = `Welcome ${user.username}!`
               res.redirect('/')
             }
           })
