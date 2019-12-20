@@ -1,4 +1,4 @@
-.video-l {
+/* .video-l {
     background: rgba(109,0,25,1);
     background: -moz-linear-gradient(left, rgba(109,0,25,1) 0%, rgba(169,3,41,1) 0%, rgba(169,3,41,0) 20%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(109,0,25,1)), color-stop(0%, rgba(169,3,41,1)), color-stop(20%, rgba(169,3,41,0)));
@@ -7,14 +7,14 @@
     background: -ms-linear-gradient(left, rgba(109,0,25,1) 0%, rgba(169,3,41,1) 0%, rgba(169,3,41,0) 20%);
     background: linear-gradient(to right, rgba(109,0,25,1) 0%, rgba(169,3,41,1) 0%, rgba(169,3,41,0) 20%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0019', endColorstr='#a90329', GradientType=1 );
-}
+} */
 
-.video-position-down{
+/* .video-position-down{
     z-index:-2;
     position: relative;
-}
+} */
 
-.video-down{
+/* .video-down{
     background: rgba(109,0,25,1);
     background: -moz-linear-gradient(-45deg, rgba(109,0,25,1) 0%, rgba(169,3,41,1) 0%, rgba(169,3,41,0) 16%);
     background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(109,0,25,1)), color-stop(0%, rgba(169,3,41,1)), color-stop(16%, rgba(169,3,41,0)));
@@ -36,4 +36,213 @@
     background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.29) 87%);
     background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.29) 87%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+} */
+
+#background {
+    background-color: rgb(19, 100, 19);
+   
+}
+
+/* #search-input {
+    border-color: goldenrod;
+    border-width: 2px;
+    background-color: rgb(19, 100, 19);
+    color: rgb(241, 177, 13);
+} */
+
+#home-title {
+    font-family: 'Sofia', cursive;
+    padding-top: 10px;
+    color: rgb(241, 177, 13);
+    text-align: center;
+    font-size: 100px;
+    padding-top: 20%;
+
+}
+
+#search-btn {
+    color: rgb(241, 177, 13);
+    border-color: goldenrod;
+    border-width: 2px;
+    background-color: rgb(19, 100, 19);
+    align-self: center;
+    
+
+    
+}
+
+#sinopsis-title {
+    text-decoration: underline;
+}
+
+#home {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#search-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#movie-title {
+    font-family: 'Girassol', cursive;
+    color: rgb(241, 177, 13);
+
+}
+
+.spoty-img {
+    height: 250px;
+    width: 300px;
+}
+
+.navbar {
+    background-color: rgb(8, 61, 8);
+    
+}
+
+#search-form {
+    padding-top: 5%;
+}
+
+.nav-link {
+    color: rgb(241, 177, 13);
+}
+
+.cards-container {
+    display: flex;
+    padding: 50px 100px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.cards-container img {
+    object-fit: contain;
+    object-position: center;
+    height: 200px;
+    width: 100%;
+}
+
+#card-background {
+    background-color: rgb(8, 61, 8);
+}
+
+.card-title {
+    color: rgb(241, 177, 13);
+}
+
+#copy {
+    color: rgb(241, 177, 13);
+}
+
+.profile {
+    background-color: rgb(8, 61, 8); 
+}
+
+#favorite-title {
+    text-align: center;
+    color: rgb(241, 177, 13);
+    padding-top: 3%;
+    text-decoration: underline;
+}
+
+.card-body h5 {
+    margin-top: 20px;;
+}
+
+#new-form {
+    margin-top: 5%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    color: rgb(241, 177, 13);
+}
+
+#new-form input {
+    border-color:rgb(241, 177, 13);
+    border-width: 2px;
+}
+
+#new-form textarea {
+    border-color:rgb(241, 177, 13);
+    border-width: 2px;
+}
+
+#login-btn {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#login-btn {
+    text-align: center;
+}
+
+
+#qestion {
+    text-align: center;
+    padding-top: 3%;
+    color: white
+}
+
+#or {
+    padding-top: 1%;
+    color: white
+    
+}
+
+.fab {
+    color: blue;
+}
+
+#google {
+    background-color: rgb(138, 138, 138);
+    border-color:rgb(241, 177, 13);
+}
+
+#add-fav-btn {
+    background-color: rgb(19, 100, 19);
+    border: none;
+    color: rgb(241, 177, 13);
+    padding-bottom: 2%;
+}
+
+#icons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#sinopsis {
+    max-width: 90%;
+}
+
+#sinopsis h5 {
+    max-width: 100%;
+    text-align: justify;
+}
+
+#fav {
+    padding-top: 1%;
+}
+
+.spoty-title {
+    padding-top: 10%;
+    font-size: 35px;
+}
+
+.spoty-logo {
+    color: rgb(241, 177, 13);
+    border-color: rgb(6, 63, 6);
+}
+
+#plot {
+    font-family: 'Raleway', sans-serif;
+
 }

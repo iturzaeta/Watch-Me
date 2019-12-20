@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user.model')
 const email = require('../config/mail.config')
 const passport = require('passport');
+const imdb = require('imdb-api')
 
 
 module.exports.login = (req, res, next) => {
@@ -104,7 +105,7 @@ module.exports.doLogin = (req, res, next) =>{
               })
             } else {
               req.session.user = user
-              req.session.genericSuccess = 'Welcome!'
+              req.session.genericSuccess = `Welcome ${user.username}!`
               res.redirect('/')
             }
           })
@@ -128,9 +129,17 @@ module.exports.doLogin = (req, res, next) =>{
 module.exports.profile = (req, res, next) => {
   User.findOne ({username: req.params.username})
     .then(user =>{
-      console.log(user)
       if(user){
-        res.render('users/profile',{user})
+        let movies = []
+        Promise.all(user.favorite.map(id => {
+          return imdb.get({id: id}, {apiKey: process.env.IMDB_ID}).
+            then((movie) => {
+              movies.push(movie)
+          });
+        }))
+        .then(() => {
+          res.render('users/profile',{user: user, movies: movies})
+        })
       }
       else{
         res.redirect('/')
@@ -149,5 +158,52 @@ module.exports.logout = (req, res) => {
   req.session.destroy() //destroy session to server
   res.clearCookie("connect.sid") //destroy cookie nav
   res.redirect('/')
+}
+
+module.exports.edit = (req, res, next) => {
+  
+  const username = req.params.username
+  User.findOne({username: username})
+  .then(user =>{
+    res.render('users/new',user)
+  }) 
+  
+}
+
+module.exports.doEdit = (req, res, next) => {
+  const {name,username,email,password,bio} = req.body
+  
+  console.log(req.body)
+
+  userModel = {
+    name,
+    username,
+    email,
+    password,
+    avatar: req.file ? req.file.url : null,
+    bio
+}
+  
+    User.findOneAndUpdate({username},userModel,{ new: true })
+    .then(()=>{
+      res.redirect(`/users/${req.body.username}`)
+    })
+    .catch(err => next(err))
+
+}
+
+
+module.exports.delete = (req, res, next) => {
+
+  const username = req.params.username
+
+  User.findOneAndRemove({username: username})
+  .then(() =>{
+    req.session.destroy() //destroy session to server
+    res.clearCookie("connect.sid") //destroy cookie nav
+    res.redirect('/')
+  })
+  .catch(err => next(err))
+
 }
 

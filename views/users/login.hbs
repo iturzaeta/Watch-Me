@@ -1,17 +1,26 @@
+<div id="new-form">
+
 <form action="/users/login" method="POST">
   <div class="form-group">
     <label for="email">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <small id="email" class="form-text"><i>We'll never share your email with anyone else.</i></small>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password">Password <small><i>(min. 8 characters)</i></small></label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary">LogIn</button>
+  <button id="login-btn" type="submit" class="btn btn-primary">LogIn</button>
 </form>
-<a href="/users/new"><button class="btn btn-warning mt-5">Create new account</button></a>
 
-<form action="/google" method="POST">
-<button type="submit">Google</button>
+</div>
+
+<h6 id="qestion">Dont have an account?</h6>
+<div id="login-btn">
+  <a href="/users/new"><button class="btn btn-warning mt-3">Create new account</button></a>
+  <h6 id="or">or</h6>
+  <form action="/google" method="POST">
+  <button id="google" type="submit"><i class="fab fa-google"></i> LogIn with <span style="color: blue;">G</span><span style="color: red;">o</span><span style="color: yellow;">o</span><span style="color: blue;">g</span><span style="color: green;">l</span><span style="color: red;">e</span></button>
 </form>
+
+</div>
