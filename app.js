@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const alertMiddleware = require('./middlewares/alert.middleware')
 
 
-
 require('./config/hbs.config');
 require('./config/db.config');
 const passportConfig = require('./config/passport.config');

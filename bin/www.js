@@ -1,6 +1,7 @@
 // catch 404 and render a not-found.hbs template
-const app = require('express');
+const express = require('express');
 const http = require('http')
+const app = express()
 
 app.use((req, res, next) => {
   res.status(404);
