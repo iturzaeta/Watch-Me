@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/wwww",
-    "start-dev": "nodemon ./bin/wwww",
+    "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www",
     "dev": "DEBUG=bubble-belly:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+
   },
   "author": "",
   "license": "ISC",
